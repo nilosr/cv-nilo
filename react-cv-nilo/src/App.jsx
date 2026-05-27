@@ -94,7 +94,7 @@ const DATA = {
       name: "Portfolio Website",
       description: "Site pessoal para exibir meu portfólio e projetos.",
       stack: ["React", "TypeScript"],
-      link: "github.com/nilosr/portfolio",
+      link: "github.com/nilosr/cv-nilo",
       status: "ativo",
     },
   ],
