@@ -5,7 +5,6 @@ import ShowcasePage from "./pages/ShowcasePage.jsx";
 const DATA = {
   name: "Nilo Romero",
   title: "Engenheiro de Controle e Automação | Desenvolvedor",
-  tagline: "Desenvolvendo aplicações web e sistemas de automação para um futuro mais conectado e eficiente.",
   location: "Brasil",
   email: "nilosromero@gmail.com",
   github: "github.com/nilosr",
@@ -158,10 +157,10 @@ function GlowDot({ color = "cyan" }) {
 
 function Tag({ children, variant = "default" }) {
   const variants = {
-    default: "border border-slate-600 text-slate-400 bg-slate-800/50",
-    cyan: "border border-cyan-800 text-cyan-400 bg-cyan-950/50",
-    green: "border border-green-800 text-green-400 bg-green-950/50",
-    amber: "border border-amber-800 text-amber-400 bg-amber-950/50",
+    default: "border border-slate-300 text-slate-500 bg-slate-100/50 dark:border-slate-600 dark:text-slate-400 dark:bg-slate-800/50",
+    cyan:    "border border-cyan-400 text-cyan-600 bg-cyan-50 dark:border-cyan-800 dark:text-cyan-400 dark:bg-cyan-950/50",
+    green:   "border border-green-500 text-green-600 bg-green-50 dark:border-green-800 dark:text-green-400 dark:bg-green-950/50",
+    amber:   "border border-amber-500 text-amber-600 bg-amber-50 dark:border-amber-800 dark:text-amber-400 dark:bg-amber-950/50",
   };
   return (
     <span className={`text-xs font-mono px-2 py-0.5 rounded ${variants[variant]}`}>
@@ -173,14 +172,14 @@ function Tag({ children, variant = "default" }) {
 function SectionLabel({ id, children }) {
   return (
     <div className="flex items-center gap-3 mb-10">
-      <span className="font-mono text-xs text-cyan-500 select-none">{"// "}</span>
+      <span className="font-mono text-xs text-cyan-600 dark:text-cyan-500 select-none">{"// "}</span>
       <h2
         id={id}
-        className="font-mono text-xs uppercase tracking-[0.25em] text-cyan-400 scroll-mt-24"
+        className="font-mono text-xs uppercase tracking-[0.25em] text-cyan-700 dark:text-cyan-400 scroll-mt-24"
       >
         {children}
       </h2>
-      <div className="flex-1 h-px bg-gradient-to-r from-cyan-900 to-transparent" />
+      <div className="flex-1 h-px bg-gradient-to-r from-cyan-300 dark:from-cyan-900 to-transparent" />
     </div>
   );
 }
@@ -190,48 +189,41 @@ function HeroSection() {
   return (
     <section id="sobre" className="min-h-screen flex flex-col justify-center pt-20 pb-16 scroll-mt-20">
 
-      <h1 className="font-mono text-5xl md:text-7xl font-bold text-white leading-none mb-2 tracking-tight">
+      <h1 className="font-mono text-5xl md:text-7xl font-bold text-slate-900 dark:text-white leading-none mb-2 tracking-tight">
         {displayed}
         {!done && (
           <span className="inline-block w-0.5 h-14 md:h-20 bg-cyan-400 ml-1 animate-pulse align-bottom" />
         )}
       </h1>
 
-      <p className="font-mono text-lg md:text-xl text-cyan-400 mt-3 mb-6">
+      <p className="font-mono text-lg md:text-xl text-cyan-600 dark:text-cyan-400 mt-3 mb-6">
         <span className="text-slate-500">{">"} </span>
         {DATA.title}
       </p>
 
-      <p className="text-slate-400 max-w-xl leading-relaxed mb-8 font-light">
+      <p className="text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mb-8 font-light">
         {DATA.tagline}
       </p>
-
-      <div className="flex items-center gap-2 font-mono text-xs text-slate-500 mb-8">
-        <GlowDot color="green" />
-        <span>disponível para projetos</span>
-        <span className="mx-2 text-slate-700">|</span>
-        <span className="text-slate-600">{DATA.location}</span>
-      </div>
 
       <div className="mb-12">
         <Link
           to="/showcase"
-          className="inline-flex items-center gap-2 font-mono text-xs border border-slate-700 text-slate-400 px-4 py-2 rounded hover:border-cyan-700 hover:text-cyan-300 transition-colors bg-slate-900/50"
+          className="inline-flex items-center gap-2 font-mono text-xs border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 px-4 py-2 rounded hover:border-cyan-500 dark:hover:border-cyan-700 hover:text-cyan-600 dark:hover:text-cyan-300 transition-colors bg-slate-100/50 dark:bg-slate-900/50"
         >
           <span className="text-cyan-600">{">"}</span>
           showcase/
         </Link>
       </div>
 
-      <div className="border border-slate-700 rounded-lg p-5 max-w-xl bg-slate-900/50">
+      <div className="border border-slate-200 dark:border-slate-700 rounded-lg p-5 max-w-xl bg-white dark:bg-slate-900/50">
         <div className="flex items-center gap-2 mb-4">
           <div className="w-3 h-3 rounded-full bg-red-500/70" />
           <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
           <div className="w-3 h-3 rounded-full bg-green-500/70" />
-          <span className="font-mono text-xs text-slate-600 ml-2">sobre.txt</span>
+          <span className="font-mono text-xs text-slate-400 dark:text-slate-600 ml-2">sobre.txt</span>
         </div>
         {DATA.about.trim().split("\n").map((line, i) => (
-          <p key={i} className="font-mono text-sm text-slate-300 leading-relaxed">
+          <p key={i} className="font-mono text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
             {line.trim()}
           </p>
         ))}
@@ -250,7 +242,7 @@ function ExperienceSection() {
           <div
             key={i}
             className={`border rounded-lg overflow-hidden transition-colors ${
-              open === i ? "border-cyan-800 bg-slate-900/80" : "border-slate-800 bg-slate-900/30"
+              open === i ? "border-cyan-500 bg-slate-50 dark:border-cyan-800 dark:bg-slate-900/80" : "border-slate-200 bg-white/50 dark:border-slate-800 dark:bg-slate-900/30"
             }`}
           >
             <button
@@ -259,12 +251,12 @@ function ExperienceSection() {
             >
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <span className="font-mono text-sm font-semibold text-white">{job.role}</span>
+                  <span className="font-mono text-sm font-semibold text-slate-900 dark:text-white">{job.role}</span>
                   {i === 0 && <Tag variant="green">atual</Tag>}
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-cyan-400">{job.company}</span>
-                  <span className="text-xs text-slate-600 font-mono">{job.period}</span>
+                  <span className="text-xs text-slate-400 dark:text-slate-600 font-mono">{job.period}</span>
                 </div>
               </div>
               <span
@@ -275,7 +267,7 @@ function ExperienceSection() {
             </button>
 
             {open === i && (
-              <div className="px-5 pb-5 border-t border-slate-800">
+              <div className="px-5 pb-5 border-t border-slate-200 dark:border-slate-800">
                 <div className="flex flex-wrap gap-2 mt-4 mb-5">
                   {job.stack.map((s) => (
                     <Tag key={s} variant="cyan">{s}</Tag>
@@ -283,7 +275,7 @@ function ExperienceSection() {
                 </div>
                 <ul className="space-y-2">
                   {job.bullets.map((b, j) => (
-                    <li key={j} className="flex gap-3 text-sm text-slate-400">
+                    <li key={j} className="flex gap-3 text-sm text-slate-600 dark:text-slate-400">
                       <span className="text-cyan-600 mt-0.5 shrink-0">▹</span>
                       <span>{b}</span>
                     </li>
@@ -304,13 +296,13 @@ function SkillsSection() {
       <SectionLabel id="habilidades">habilidades</SectionLabel>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {Object.entries(DATA.skills).map(([cat, items]) => (
-          <div key={cat} className="border border-slate-800 rounded-lg p-5 bg-slate-900/30">
+          <div key={cat} className="border border-slate-200 dark:border-slate-800 rounded-lg p-5 bg-white/50 dark:bg-slate-900/30">
             <p className="font-mono text-xs text-cyan-500 mb-4">{cat.toLowerCase()}/</p>
             <div className="flex flex-wrap gap-2">
               {items.map((skill) => (
                 <span
                   key={skill}
-                  className="font-mono text-xs px-3 py-1.5 border border-slate-700 text-slate-300 rounded hover:border-cyan-700 hover:text-cyan-300 transition-colors cursor-default"
+                  className="font-mono text-xs px-3 py-1.5 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded hover:border-cyan-500 dark:hover:border-cyan-700 hover:text-cyan-600 dark:hover:text-cyan-300 transition-colors cursor-default"
                 >
                   {skill}
                 </span>
@@ -329,12 +321,12 @@ function EducationSection() {
       <SectionLabel id="educação">educação</SectionLabel>
       <div className="space-y-4">
         {DATA.education.map((edu, i) => (
-          <div key={i} className="flex gap-5 border border-slate-800 rounded-lg p-5 bg-slate-900/30">
-            <div className="shrink-0 font-mono text-xs text-slate-600 pt-1 w-20 text-right">
+          <div key={i} className="flex gap-5 border border-slate-200 dark:border-slate-800 rounded-lg p-5 bg-white/50 dark:bg-slate-900/30">
+            <div className="shrink-0 font-mono text-xs text-slate-400 dark:text-slate-600 pt-1 w-20 text-right">
               {edu.period}
             </div>
-            <div className="border-l border-slate-700 pl-5">
-              <p className="font-semibold text-white text-sm mb-1">{edu.degree}</p>
+            <div className="border-l border-slate-200 dark:border-slate-700 pl-5">
+              <p className="font-semibold text-slate-900 dark:text-white text-sm mb-1">{edu.degree}</p>
               <p className="text-cyan-400 text-sm mb-2">{edu.institution}</p>
               <p className="text-slate-500 text-xs">{edu.note}</p>
             </div>
@@ -353,10 +345,10 @@ function ProjectsSection() {
     {DATA.projects.map((proj) => (
       <div
         key={proj.name}
-        className="border border-slate-800 rounded-lg p-5 bg-slate-900/30 hover:border-slate-600 transition-colors group flex flex-col"
+        className="border border-slate-200 dark:border-slate-800 rounded-lg p-5 bg-white/50 dark:bg-slate-900/30 hover:border-slate-400 dark:hover:border-slate-600 transition-colors group flex flex-col"
       >
         <div className="flex items-start justify-between mb-3">
-          <span className="font-mono text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+          <span className="font-mono text-base font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
             {proj.name}
           </span>
           <Tag variant={proj.status === "ativo" ? "green" : "default"}>
@@ -364,7 +356,7 @@ function ProjectsSection() {
           </Tag>
         </div>
         
-        <p className="text-sm text-slate-400 leading-relaxed flex-1 mb-4">
+        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex-1 mb-4">
           {proj.description}
         </p>
         
@@ -378,7 +370,7 @@ function ProjectsSection() {
             href={`https://${proj.link}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-xs text-slate-600 hover:text-cyan-400 transition-colors mt-auto"
+            className="font-mono text-xs text-slate-400 dark:text-slate-600 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors mt-auto"
           >
             {proj.link} →
           </a>
@@ -399,8 +391,8 @@ function ContactSection() {
   return (
     <section className="py-16 pb-32">
       <SectionLabel id="contato">contato</SectionLabel>
-      <div className="border border-slate-800 rounded-lg p-8 bg-slate-900/30 max-w-lg">
-        <p className="text-slate-400 mb-8 text-sm leading-relaxed">
+      <div className="border border-slate-200 dark:border-slate-800 rounded-lg p-8 bg-white/50 dark:bg-slate-900/30 max-w-lg">
+        <p className="text-slate-600 dark:text-slate-400 mb-8 text-sm leading-relaxed">
           Aberto a conversas sobre oportunidades e colaborações.
         </p>
         <div className="space-y-4">
@@ -412,11 +404,11 @@ function ContactSection() {
               rel="noopener noreferrer"
               className="flex items-center gap-4 group"
             >
-              <span className="font-mono text-xs text-slate-600 w-16 text-right shrink-0">
+              <span className="font-mono text-xs text-slate-400 dark:text-slate-600 w-16 text-right shrink-0">
                 {label}
               </span>
-              <div className="flex-1 h-px bg-slate-800 group-hover:bg-cyan-900 transition-colors" />
-              <span className="font-mono text-sm text-slate-400 group-hover:text-cyan-300 transition-colors">
+              <div className="flex-1 h-px bg-slate-200 dark:bg-slate-800 group-hover:bg-cyan-200 dark:group-hover:bg-cyan-900 transition-colors" />
+              <span className="font-mono text-sm text-slate-600 dark:text-slate-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
                 {value}
               </span>
             </a>
@@ -427,10 +419,84 @@ function ContactSection() {
   );
 }
 
+// ─── SPLASH ──────────────────────────────────────────────────────────────────
+
+function ThemeToggle({ isDark, setIsDark }) {
+  return (
+    <div className="flex items-center gap-3">
+      <span className={`text-base select-none transition-opacity ${!isDark ? "opacity-100" : "opacity-30"}`}>☀️</span>
+      <button
+        onClick={() => setIsDark(!isDark)}
+        aria-label="Toggle theme"
+        className={`relative w-11 h-6 rounded-full transition-colors duration-300 focus:outline-none ${
+          isDark ? "bg-slate-700" : "bg-cyan-600"
+        }`}
+      >
+        <span
+          className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-transform duration-300 ${
+            isDark ? "translate-x-1" : "translate-x-6"
+          }`}
+        />
+      </button>
+      <span className={`text-base select-none transition-opacity ${isDark ? "opacity-100" : "opacity-30"}`}>🌙</span>
+    </div>
+  );
+}
+
+function SplashSection({ isDark, setIsDark, language, setLanguage }) {
+  const bg      = isDark ? "bg-slate-950" : "bg-slate-50";
+  const border  = isDark ? "border-slate-800" : "border-slate-200";
+  const iconBg  = isDark ? "bg-slate-900" : "bg-white";
+  const iconTxt = isDark ? "text-slate-700" : "text-slate-300";
+  const divider = isDark ? "text-slate-800" : "text-slate-200";
+  const hint    = isDark ? "text-slate-700" : "text-slate-300";
+
+  return (
+    <section className={`h-screen flex flex-col items-center justify-center gap-7 ${bg} relative`}>
+      {/* ── Icon placeholder — swap this element when ready ── */}
+      <div className={`w-24 h-24 rounded-2xl border-2 flex items-center justify-center ${iconBg} ${border}`}>
+        <span className={`font-mono text-sm font-bold ${iconTxt}`}>NR</span>
+      </div>
+
+      {/* ── Theme toggle ── */}
+      <ThemeToggle isDark={isDark} setIsDark={setIsDark} />
+
+      {/* ── Language flags ── */}
+      <div className="flex items-center gap-4">
+        <button
+          onClick={() => setLanguage("pt")}
+          aria-label="Português"
+          className={`text-2xl leading-none transition-opacity ${
+            language === "pt" ? "opacity-100" : "opacity-25 hover:opacity-60"
+          }`}
+        >
+          🇧🇷
+        </button>
+        <span className={divider}>|</span>
+        <button
+          onClick={() => setLanguage("en")}
+          aria-label="English"
+          className={`text-2xl leading-none transition-opacity ${
+            language === "en" ? "opacity-100" : "opacity-25 hover:opacity-60"
+          }`}
+        >
+          🇬🇧
+        </button>
+      </div>
+
+      {/* ── Scroll hint ── */}
+      <div className={`absolute bottom-8 flex flex-col items-center gap-1 ${hint}`}>
+        <span className="font-mono text-[10px] tracking-widest uppercase">scroll</span>
+        <span className="animate-bounce">↓</span>
+      </div>
+    </section>
+  );
+}
+
 function Nav() {
   const active = useScrollSpy();
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 border-b border-slate-800/70 bg-slate-950/90 backdrop-blur-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 border-b border-slate-200/70 dark:border-slate-800/70 bg-white/90 dark:bg-slate-950/90 backdrop-blur-sm">
       <span className="font-mono text-xs text-cyan-500">
         <span className="text-slate-500">~/</span>
         {DATA.name.split(" ")[0].toLowerCase()}
@@ -441,7 +507,7 @@ function Nav() {
             <a
               href={`#${id}`}
               className={`font-mono text-xs transition-colors ${
-                active === id ? "text-cyan-400" : "text-slate-500 hover:text-slate-300"
+                active === id ? "text-cyan-600 dark:text-cyan-400" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
               }`}
             >
               {active === id && <span className="text-cyan-600 mr-1">{">"}</span>}
@@ -452,7 +518,7 @@ function Nav() {
         <li>
           <Link
             to="/showcase"
-            className="font-mono text-xs border border-slate-700 text-slate-400 px-3 py-1 rounded hover:border-cyan-700 hover:text-cyan-300 transition-colors"
+            className="font-mono text-xs border border-slate-300 dark:border-slate-700 text-slate-500 dark:text-slate-400 px-3 py-1 rounded hover:border-cyan-500 dark:hover:border-cyan-700 hover:text-cyan-600 dark:hover:text-cyan-300 transition-colors"
           >
             showcase/
           </Link>
@@ -464,9 +530,17 @@ function Nav() {
 
 // ─── APP ─────────────────────────────────────────────────────────────────────
 
-function HomePage() {
+function HomePage({ isDark, setIsDark, language, setLanguage }) {
+  const [pastSplash, setPastSplash] = useState(false);
+
+  useEffect(() => {
+    const handle = () => setPastSplash(window.scrollY > window.innerHeight * 0.5);
+    window.addEventListener("scroll", handle, { passive: true });
+    return () => window.removeEventListener("scroll", handle);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200">
+    <div className={`min-h-screen bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 ${isDark ? "dark" : ""}`}>
       <div
         className="fixed inset-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -476,7 +550,22 @@ function HomePage() {
         }}
       />
 
-      <Nav />
+      {/* Splash — full-width, outside main container */}
+      <SplashSection
+        isDark={isDark}
+        setIsDark={setIsDark}
+        language={language}
+        setLanguage={setLanguage}
+      />
+
+      {/* Nav fades in once user scrolls past splash */}
+      <div
+        className={`transition-opacity duration-500 ${
+          pastSplash ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <Nav />
+      </div>
 
       <main className="relative max-w-3xl mx-auto px-6">
         <HeroSection />
@@ -491,9 +580,22 @@ function HomePage() {
 }
 
 export default function App() {
+  const [isDark, setIsDark] = useState(true);
+  const [language, setLanguage] = useState("pt");
+
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route
+        path="/"
+        element={
+          <HomePage
+            isDark={isDark}
+            setIsDark={setIsDark}
+            language={language}
+            setLanguage={setLanguage}
+          />
+        }
+      />
       <Route path="/showcase" element={<ShowcasePage />} />
     </Routes>
   );
