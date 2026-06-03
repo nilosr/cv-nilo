@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import ShowcasePage from "./pages/ShowcasePage.jsx";
 
 const DATA = {
   name: "Nilo Romero",
@@ -204,11 +206,21 @@ function HeroSection() {
         {DATA.tagline}
       </p>
 
-      <div className="flex items-center gap-2 font-mono text-xs text-slate-500 mb-12">
+      <div className="flex items-center gap-2 font-mono text-xs text-slate-500 mb-8">
         <GlowDot color="green" />
         <span>disponível para projetos</span>
         <span className="mx-2 text-slate-700">|</span>
         <span className="text-slate-600">{DATA.location}</span>
+      </div>
+
+      <div className="mb-12">
+        <Link
+          to="/showcase"
+          className="inline-flex items-center gap-2 font-mono text-xs border border-slate-700 text-slate-400 px-4 py-2 rounded hover:border-cyan-700 hover:text-cyan-300 transition-colors bg-slate-900/50"
+        >
+          <span className="text-cyan-600">{">"}</span>
+          showcase/
+        </Link>
       </div>
 
       <div className="border border-slate-700 rounded-lg p-5 max-w-xl bg-slate-900/50">
@@ -437,6 +449,14 @@ function Nav() {
             </a>
           </li>
         ))}
+        <li>
+          <Link
+            to="/showcase"
+            className="font-mono text-xs border border-slate-700 text-slate-400 px-3 py-1 rounded hover:border-cyan-700 hover:text-cyan-300 transition-colors"
+          >
+            showcase/
+          </Link>
+        </li>
       </ul>
     </nav>
   );
@@ -444,10 +464,9 @@ function Nav() {
 
 // ─── APP ─────────────────────────────────────────────────────────────────────
 
-export default function App() {
+function HomePage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-200">
-      {/* Background grid */}
       <div
         className="fixed inset-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -468,5 +487,14 @@ export default function App() {
         <ContactSection />
       </main>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/showcase" element={<ShowcasePage />} />
+    </Routes>
   );
 }

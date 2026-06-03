@@ -6,6 +6,9 @@ import tailwindcss from '@tailwindcss/vite' // 1. Import Tailwind
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss(), // 2. Add it here
+    tailwindcss(),
   ],
+  resolve: {
+    dedupe: ['three'],
+  },
 })
